@@ -1,0 +1,58 @@
+version: "2.2"
+services:
+  redis-master:
+     image: redis
+     container_name: redis-master
+     # 暴露/映射容器端口 6391
+     ports:
+       - "6380:6379"
+     # 开启输入输出
+     stdin_open: true
+     # 开启伪终端 即命令行
+     tty: true
+     # 允许容器运行特权命令
+     privileged: true
+     networks:
+        # 网络名称
+        redis:
+          ipv4_address: 172.10.0.4
+     # 容器启动后执行的命令     
+     entrypoint:
+        - /bin/bash
+  redis-slave1:
+     image: redis
+     container_name: redis-slave1
+     ports:
+        - "6381:6379"
+     stdin_open: true
+     tty: true
+     privileged: true
+     networks:
+        redis:
+          ipv4_address: 172.10.0.2
+     entrypoint:
+        - /bin/bash
+  redis-slave2:
+     image: redis
+     container_name: redis-slave2
+     ports:
+        - "6382:6379"
+     stdin_open: true
+     tty: true
+     privileged: true
+     networks:
+        redis:
+          ipv4_address: 172.10.0.3
+     entrypoint:
+        - /bin/bash
+# 定义容器连接的网络        
+networks:
+  redis:
+     # 使用桥接驱动
+     driver: bridge
+     ipam:
+       driver: default
+       # 配置创建的网段
+       config:
+          -
+           subnet: 172.10.0.0/16
