@@ -4,7 +4,9 @@ docker-compose编排redis主从，手动配置主从
 
 docker-redis-cluster
 
-docker-compose编排 手动搭建集群 
+docker-compose编排 
+
+******手动搭建集群 ********
 1.首先 准备节点 每个节点需要开启配置cluster-enabled yes，让 Redis 运行在集群模式下。
 
 Redis-master	172.50.0.2	6391 -> 6391	master
