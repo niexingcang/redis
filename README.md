@@ -8,7 +8,8 @@ docker-compose编排
 
 ******手动搭建集群 ********
 
-1.首先 准备节点 每个节点需要开启配置cluster-enabled yes，让 Redis 运行在集群模式下。
+1.首先 准备节点 每个节点需要开启配置cluster-enabled yes，#开启集群模式 cluster-enabled yes 节点超时时间，单位毫秒 cluster-node-timeout 15000 
+集群内部配置文件 cluster-config-file "nodes-6379.conf" 让 Redis 运行在集群模式下。
 
 Redis-master	172.50.0.2	6391 -> 6391	master
 
