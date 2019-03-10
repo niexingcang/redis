@@ -32,3 +32,5 @@ redis-cli -h 47.98.147.49 -p 6395  CLUSTER REPLICATE   0affa79edef47e10a0459832d
 redis-cli -h 47.98.147.49  -p 6391  cluster addslots {0..5461}
 redis-cli -h 47.98.147.49  -p 6392 cluster addslots {5462..10922}
 redis-cli -h 47.98.147.49  -p  6393 cluster addslots {10923..16383}
+
+******redis-trib.rb搭建集群********
